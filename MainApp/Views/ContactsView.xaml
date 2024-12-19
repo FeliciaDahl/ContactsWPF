@@ -9,7 +9,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:ContactViewModel}"
              mc:Ignorable="d" 
              Background="White"
-             d:DesignHeight="600" d:DesignWidth="450">
+             d:DesignHeight="800" d:DesignWidth="450">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -23,27 +23,28 @@
                 <StackPanel Grid.Column="1">
                     <Button Content="Add new Contact" Margin="0 5 0 20" Padding="5" FontSize="14" FontWeight="Bold"
                             Command="{Binding GoToAddContactCommand}" />
-                    <Button Content="Edit contact" Margin="0 5 0 20" Padding="5" FontSize="14" FontWeight="Bold"
-                            Command="{Binding GoToEditContactCommand}" />
+ 
                 </StackPanel>
             </StackPanel>
 
             </Grid>
-
-            <ListView Grid.Row="1" ItemsSource="{Binding Contacts}" Margin="0,20,0,10" SelectionChanged="ListView_SelectionChanged">
+            <ListView Grid.Row="1" ItemsSource="{Binding Contacts}" Margin="0,20,0,10" HorizontalAlignment="Stretch">
                 
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="models:Contact">
                         <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
                             
-                            <StackPanel>
-                                <TextBlock Text="{Binding Id}" />
-                                <TextBlock Text="{Binding FullName}" />
-                                <TextBlock Text="{Binding Email}" />
-                                <TextBlock Text="{Binding Phone}" />
-                                <TextBlock Text="{Binding Address}" />
-                                <TextBlock Text="{Binding PostalCode}" />
-                            <TextBlock Text="{Binding City}" />
+                        <StackPanel Grid.Column="0" >
+                            <TextBlock Grid.Column="0" Text="{Binding FullName}" FontSize="18" Padding="5"/>
+                        </StackPanel>
+                            
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Content=" Details" CommandParameter="{Binding .}" 
+                                    Command="{Binding DataContext.GoToDetailsViewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
                         </StackPanel>
                        
                         </Grid>

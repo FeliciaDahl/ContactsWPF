@@ -32,11 +32,16 @@ namespace MainApp
                      services.AddTransient<ContactViewModel>();
                      services.AddTransient<ContactsView>();
 
+                     services.AddTransient<ContactDetailsViewModel>();
+                     services.AddTransient<ContactDetailsView>();
+
                      services.AddTransient<AddContactViewModel>();
                      services.AddTransient<AddContactView>();
 
                      services.AddTransient<EditContactViewModel>();
                      services.AddTransient<EditContactView>();
+
+                    
 
                  })
                  .Build();
