@@ -1,18 +1,18 @@
-﻿using Business.Entites;
-using Business.Entities;
+﻿using Business.Entities;
+using Business.Helpers;
 using Business.Interfaces;
 using Business.Models;
 
 public static class ContactEntityFactory
 {
 
-
-    public static ContactEntity Create(ContactModel contact, IGenerateUniqeId generateUniqeId)
+    private static readonly IGenerateUniqeId _generateUniqeId = new GenerateUniqeId();
+    public static ContactEntity Create(ContactModel contact)
     {
 
         return new ContactEntity
         {
-            Id = generateUniqeId.GenerateId(),
+            Id = _generateUniqeId.GenerateId(),
             FirstName = contact.FirstName,
             LastName = contact.LastName,
             Email = contact.Email,

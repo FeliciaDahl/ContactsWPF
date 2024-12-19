@@ -1,4 +1,5 @@
 ﻿
+using Business.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.DependencyInjection; 
 
@@ -7,6 +8,7 @@ namespace MainApp.ViewModels;
 public partial class MainViewModel : ObservableObject
 {
     private readonly IServiceProvider _serviceProvider;
+  
 
     [ObservableProperty]
     private ObservableObject _currentViewModel =null!;

@@ -5,25 +5,50 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MainApp.Views"
              xmlns:viewmodel="clr-namespace:MainApp.ViewModels"
+             xmlns:models="clr-namespace:Business.Models;assembly=Business"
              d:DataContext="{d:DesignInstance Type=viewmodel:AddContactViewModel}"
              mc:Ignorable="d" 
              Background="White"
-             d:DesignHeight="450" d:DesignWidth="400">
-    
-    
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+             d:DesignHeight="600" d:DesignWidth="450">
 
-        <StackPanel Grid.Row="0">
-            <TextBlock Text="{Binding Title}"/>
+
+    <Grid Margin="15">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Add new contact" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+
+        <StackPanel Grid.Row="1" Margin="0 20 0 0">
+            <TextBlock Text="First name" FontSize="16" FontWeight="Bold"/>
+            <TextBox Text="{Binding Contact.FirstName}" Margin="0,0,0,10" Padding="6" />
+
+            <TextBlock Text="Last name" FontSize="16" FontWeight="Bold" />
+            <TextBox Text="{Binding Contact.LastName}" Margin="0,0,0,10" Padding="6" />
+
+            <TextBlock Text="Email" FontSize="16" FontWeight="Bold" />
+            <TextBox Text="{Binding Contact.Email}" Margin="0,0,0,10" Padding="6" />
+
+            <TextBlock Text="Phone" FontSize="16" FontWeight="Bold" />
+            <TextBox Text="{Binding Contact.Phone}" Margin="0,0,0,10" Padding="6" />
+
+            <TextBlock Text="Address" FontSize="16" FontWeight="Bold" />
+            <TextBox Text="{Binding Contact.Address}" Margin="0,0,0,10" Padding="6" />
+
+            <TextBlock Text="Postal code" FontSize="16" FontWeight="Bold" />
+            <TextBox Text="{Binding Contact.PostalCode}" Margin="0,0,0,10" Padding="6" />
+
+            <TextBlock Text="City" FontSize="16" FontWeight="Bold" />
+            <TextBox Text="{Binding Contact.City}" Margin="0,0,0,10" Padding="6" />
         </StackPanel>
 
-        <Button Grid.Row="1" Padding="10"  Margin="20 5 20 30" 
-                Content="Go back to contacts" 
-                Command="{Binding GoToContactsCommand}"/>
-
+            <StackPanel Grid.Row="2">
+            <Button Content="Save" Margin="0 10 0 5" Padding="5" FontSize="14" FontWeight="Bold" />
+            <Button Content="Back to contactlist" Margin="0 5 0 20" Padding="5" FontSize="14" FontWeight="Bold" 
+                    Command="{Binding GoToContactsCommand}" />
+            </StackPanel>
     </Grid>
 </UserControl>

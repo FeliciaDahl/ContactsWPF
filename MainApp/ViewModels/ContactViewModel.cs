@@ -1,19 +1,25 @@
 ﻿
+using Business.Interfaces;
+using Business.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.ObjectModel;
 
 namespace MainApp.ViewModels;
 
-public partial class ContactViewModel : ObservableObject
+public partial class ContactViewModel(IServiceProvider serviceProvider, IContactService contactService) : ObservableObject
 {
+    
+    private readonly IServiceProvider _serviceProvider = serviceProvider;
 
-    private readonly IServiceProvider _serviceProvider;
+    private readonly IContactService _contactService = contactService;
 
     [ObservableProperty]
     private string _title = "Contacts";
 
-  
+    [ObservableProperty]
+    private ObservableCollection<Contact> _contacts = [];
 
     [RelayCommand]
     private void GoToAddContact()
@@ -22,9 +28,10 @@ public partial class ContactViewModel : ObservableObject
         mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<AddContactViewModel>();
     }
 
-    public ContactViewModel(IServiceProvider serviceProvider)
+    [RelayCommand]
+    private void GoToEditContact()
     {
-        _serviceProvider = serviceProvider;
+        var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<EditContactViewModel>();
     }
-
 }

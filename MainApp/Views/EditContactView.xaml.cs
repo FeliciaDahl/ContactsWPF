@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace MainApp.Views
 {
     /// <summary>
-    /// Interaction logic for AddContactView.xaml
+    /// Interaction logic for EditContactView.xaml
     /// </summary>
-    public partial class ContactsView : UserControl
+    public partial class EditContactView : UserControl
     {
-        public ContactsView()
+        public EditContactView()
         {
             InitializeComponent();
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

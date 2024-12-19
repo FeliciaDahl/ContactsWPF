@@ -4,6 +4,7 @@ using Business.Entities;
 using Business.Factories;
 using Business.Interfaces;
 using Business.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.Json;
@@ -13,23 +14,23 @@ namespace Business.Services;
 public class ContactService : IContactService
 
 {
+   
     private readonly IFileService _fileService;
-    private readonly IGenerateUniqeId _generateId;
     private readonly JsonSerializerOptions _jsonOptions;
     private List<ContactEntity> _contacts = [];
 
-    public ContactService(IFileService fileService, IGenerateUniqeId generateId, JsonSerializerOptions jsonOptions)
+    public ContactService(IFileService fileService)
     {
         _fileService = fileService;
-        _generateId = generateId;
-        _jsonOptions = jsonOptions;
+        _jsonOptions = new JsonSerializerOptions { WriteIndented = true };
+       
     }
 
     public bool AddContact(ContactModel contact)
     {
         try
         {
-            var contactEntity = ContactEntityFactory.Create(contact, _generateId);
+            var contactEntity = ContactEntityFactory.Create(contact);
             _contacts.Add(contactEntity);
 
             var json = JsonSerializer.Serialize(_contacts, _jsonOptions);
