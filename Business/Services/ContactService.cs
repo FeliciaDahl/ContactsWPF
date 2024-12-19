@@ -59,9 +59,39 @@ public class ContactService : IContactService
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
-            return Enumerable.Empty<Contact>();
+            return [];
         }
 
+    }
+
+    public bool UpdateContact(Contact updatedContact)
+    {
+        try
+        {
+            var listContact = _contacts.FirstOrDefault(contact => contact.Id == updatedContact.Id);
+
+            if (listContact == null)
+                return false; 
+            
+
+            listContact.FirstName = updatedContact.FirstName;
+            listContact.LastName = updatedContact.LastName;
+            listContact.Email = updatedContact.Email;
+            listContact.Phone = updatedContact.Phone;
+            listContact.Address = updatedContact.Address;
+            listContact.PostalCode = updatedContact.PostalCode;
+            listContact.City = updatedContact.City;
+
+            var json = JsonSerializer.Serialize(_contacts, _jsonOptions);
+            _fileService.SaveListToFile(json);
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return false; 
+        }
     }
 }
 

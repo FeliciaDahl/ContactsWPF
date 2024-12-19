@@ -7,25 +7,22 @@ using System;
 
 namespace MainApp.ViewModels;
 
-public partial class ContactDetailsViewModel : ObservableObject
+public partial class ContactDetailsViewModel(IServiceProvider serviceProvider) : ObservableObject
 {
-    private readonly IServiceProvider _serviceProvider;
-    private readonly IContactService _contactService;
+    private readonly IServiceProvider _serviceProvider = serviceProvider;
+ 
 
     [ObservableProperty]
     private Contact _contact = new();
 
-    public ContactDetailsViewModel(IServiceProvider serviceProvider, IContactService contactService)
-    {
-        _serviceProvider = serviceProvider;
-        _contactService = contactService;
-    }
-
     [RelayCommand]
     private void GoToEditContact()
     {
+        var editContactViewModel = _serviceProvider.GetRequiredService<EditContactViewModel>();
+        editContactViewModel.Contact = Contact;
+
         var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
-        mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<EditContactViewModel>();
+        mainViewModel.CurrentViewModel = editContactViewModel;
     }
 
     [RelayCommand]
