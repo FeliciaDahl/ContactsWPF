@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <!--Title-->
+    <Style x:Key="TitleText" TargetType="TextBlock">
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="{StaticResource Nunito}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="28"/>
+    </Style>
+
+    <!--Label-->
+    <Style x:Key="LableText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Nunito}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
+
+    <!--Output-->
+    <Style x:Key="OutputText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Nunito}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+</ResourceDictionary>

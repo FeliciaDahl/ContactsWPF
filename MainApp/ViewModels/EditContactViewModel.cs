@@ -31,7 +31,6 @@ public partial class EditContactViewModel(IServiceProvider serviceProvider, ICon
 
     }
 
-
     [RelayCommand]
     private void GoToContacts()
     {

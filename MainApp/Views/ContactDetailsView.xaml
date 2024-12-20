@@ -9,49 +9,53 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:ContactDetailsViewModel}"
              mc:Ignorable="d" 
              Background="White"
-             d:DesignHeight="800" d:DesignWidth="450">
-    
-    
-    <Grid Margin="10">
+             d:DesignHeight="750" d:DesignWidth="450">
+
+
+    <Grid Background="#cacfd2" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-         <TextBlock Grid.Row="0" Text="Details" Padding="10" FontSize="24" Margin="0 10 0 10" FontWeight="Bold" HorizontalAlignment="Center"/>
+        <TextBlock Margin="10 20 10 10" Grid.Row="0" Text="Contact Details" Style="{StaticResource TitleText}"/>
 
         <StackPanel Grid.Row="1" Margin="0 20 0 0">
 
-            <TextBlock Text="Contact ID:" FontSize="16" FontWeight="Bold"/>
-            <TextBlock Text="{Binding Contact.Id}" FontSize="14" Margin="0,0,0,10"/>
+            <TextBlock Text="Contact ID:" Style="{StaticResource LableText}"/>
+            <TextBlock Text="{Binding Contact.Id}" Style="{StaticResource OutputText }" Margin="0,0,0,10"/>
 
-            <TextBlock Text="First name:" FontSize="16" FontWeight="Bold"/>
+            <TextBlock Text="First name:" Style="{StaticResource LableText}"/>
             <TextBlock Text="{Binding Contact.FirstName}" FontSize="14" Margin="0,0,0,10"/>
 
-            <TextBlock Text="Last name:" FontSize="16" FontWeight="Bold" />
+            <TextBlock Text="Last name:" Style="{StaticResource LableText}"/>
             <TextBlock Text="{Binding Contact.LastName}" FontSize="14" Margin="0,0,0,10"/>
 
-            <TextBlock Text="Email:" FontSize="16" FontWeight="Bold" />
+            <TextBlock Text="Email:" Style="{StaticResource LableText}"/>
             <TextBlock Text="{Binding Contact.Email}" FontSize="14" Margin="0,0,0,10"/>
 
-            <TextBlock Text="Phone:" FontSize="16" FontWeight="Bold" />
+            <TextBlock Text="Phone:" Style="{StaticResource LableText}"/>
             <TextBlock Text="{Binding Contact.Phone}" FontSize="14"  Margin="0,0,0,10"/>
 
-            <TextBlock Text="Address:" FontSize="16" FontWeight="Bold" />
+            <TextBlock Text="Address:" Style="{StaticResource LableText}"/>
             <TextBlock Text="{Binding Contact.Address}" FontSize="14"  Margin="0,0,0,10"/>
 
-            <TextBlock Text="Postal code:" FontSize="16" FontWeight="Bold" />
+            <TextBlock Text="Postal code:" Style="{StaticResource LableText}" />
             <TextBlock Text="{Binding Contact.PostalCode}" FontSize="14"  Margin="0,0,0,10"/>
 
-            <TextBlock Text="City:" FontSize="16" FontWeight="Bold" />
+            <TextBlock Text="City:" Style="{StaticResource LableText}" />
             <TextBlock Text="{Binding Contact.City}" FontSize="14" Margin="0,0,0,10"/>
         </StackPanel>
         
         <StackPanel  Grid.Row="2" >
-        <Button Content="Edit" Margin="0 5 0 10" Padding="5" FontSize="14" FontWeight="Bold" 
-            Command="{Binding GoToEditContactCommand}"/>
-            <Button Content="Back to contactlist" Margin="0 2 0 20" Padding="5" FontSize="14" FontWeight="Bold" 
+        <Button Content="Edit"
+                Margin="40 0 40 20"
+                Style="{StaticResource StandardButton}"
+                Command="{Binding GoToEditContactCommand}"/>
+        <Button Content="Back to contactlist"
+                Margin="40 0 40 30"
+                Style="{StaticResource StandardButton}"
             Command="{Binding GoToContactsCommand }"/>
         </StackPanel>
     </Grid>

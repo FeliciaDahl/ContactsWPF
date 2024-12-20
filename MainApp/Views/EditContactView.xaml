@@ -8,9 +8,47 @@
              xmlns:viewmodels="clr-namespace:MainApp.ViewModels"
              d:DataContext="{d:DesignInstance Type=viewmodels:EditContactViewModel}"
              mc:Ignorable="d" 
-             Background="White"
-             d:DesignHeight="800" d:DesignWidth="450">
-    <Grid>
-        <TextBlock Text="HEJ"/>
+             d:DesignHeight="750" d:DesignWidth="450">
+    
+    
+    <Grid Background="#34495e">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Edit contact" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+
+        <StackPanel Grid.Row="1" Margin="0 20 0 0">
+            <TextBlock Text="First name" FontSize="16" FontWeight="Bold"/>
+            <TextBox Text="{Binding Contact.FirstName}" Margin="0,0,0,10" Padding="6" />
+
+            <TextBlock Text="Last name" FontSize="16" FontWeight="Bold" />
+            <TextBox Text="{Binding Contact.LastName}" Margin="0,0,0,10" Padding="6" />
+
+            <TextBlock Text="Email" FontSize="16" FontWeight="Bold" />
+            <TextBox Text="{Binding Contact.Email}" Margin="0,0,0,10" Padding="6" />
+
+            <TextBlock Text="Phone" FontSize="16" FontWeight="Bold" />
+            <TextBox Text="{Binding Contact.Phone}" Margin="0,0,0,10" Padding="6" />
+
+            <TextBlock Text="Address" FontSize="16" FontWeight="Bold" />
+            <TextBox Text="{Binding Contact.Address}" Margin="0,0,0,10" Padding="6" />
+
+            <TextBlock Text="Postal code" FontSize="16" FontWeight="Bold" />
+            <TextBox Text="{Binding Contact.PostalCode}" Margin="0,0,0,10" Padding="6" />
+
+            <TextBlock Text="City" FontSize="16" FontWeight="Bold" />
+            <TextBox Text="{Binding Contact.City}" Margin="0,0,0,10" Padding="6" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <Button Content="Save" Margin="0 10 0 5" Padding="5" FontSize="14" FontWeight="Bold" 
+                    Command="{Binding SaveCommand}" />
+            <Button Content="Back to contactlist" Margin="0 5 0 20" Padding="5" FontSize="14" FontWeight="Bold" 
+                    Command="{Binding GoToContactsCommand}" />
+        </StackPanel>
     </Grid>
 </UserControl>
