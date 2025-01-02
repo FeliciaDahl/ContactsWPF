@@ -93,6 +93,32 @@ public class ContactService : IContactService
             return false; 
         }
     }
+
+    public bool DeleteContact(Contact contactToDelete)
+    {
+        try
+        {
+            var listContact = _contacts.FirstOrDefault(contact => contact.Id == contactToDelete.Id);
+           
+            if (listContact == null)
+                return false;
+
+            _contacts.Remove(listContact);
+
+           
+
+            var json = JsonSerializer.Serialize(_contacts, _jsonOptions);
+            _fileService.SaveListToFile(json);
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return false;
+        }
+
+    }
 }
 
 

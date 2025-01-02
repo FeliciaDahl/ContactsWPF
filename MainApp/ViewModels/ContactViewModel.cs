@@ -16,6 +16,9 @@ public partial class ContactViewModel : ObservableObject
     private readonly IContactService _contactService;
 
     [ObservableProperty]
+    private Contact _contact = new();
+
+    [ObservableProperty]
     private ObservableCollection<Contact> _contacts = [];
 
     public ContactViewModel(IServiceProvider serviceProvider, IContactService contactService)
@@ -44,6 +47,16 @@ public partial class ContactViewModel : ObservableObject
             mainViewModel.CurrentViewModel = contactDetailsViewModel;
         }
 
+    }
+    [RelayCommand]
+    private void DeleteContactInList(Contact contact)
+    {
+        var result = _contactService.DeleteContact(contact);
+
+        if (result)
+        {
+            Contacts.Remove(contact); 
+        }
     }
 
 }

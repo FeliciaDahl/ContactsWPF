@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
  <!--Title-->
     <Style x:Key="TitleText" TargetType="TextBlock">
+        <Setter Property="Margin" Value="10 20 10 20"/>
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="FontFamily" Value="{StaticResource Nunito}"/>
@@ -11,16 +12,20 @@
 
     <!--Label-->
     <Style x:Key="LableText" TargetType="TextBlock">
+        <Setter Property="Padding" Value="5 0 0 0"/>
         <Setter Property="FontFamily" Value="{StaticResource Nunito}"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Background" Value="DarkGray"/>
     </Style>
 
     <!--Output-->
     <Style x:Key="OutputText" TargetType="TextBlock">
+        <Setter Property="Padding" Value="5"/>
         <Setter Property="FontFamily" Value="{StaticResource Nunito}"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontSize" Value="16"/>
+        
     </Style>
 
 </ResourceDictionary>

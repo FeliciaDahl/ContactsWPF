@@ -18,34 +18,46 @@
             </Grid.RowDefinitions>
 
 
-        <TextBlock Margin="10 20 10 10" Grid.Row="0" Text="My Contacts" Style="{StaticResource TitleText}"/>
+        <TextBlock Grid.Row="0" Text="My Contacts" Style="{StaticResource TitleText}"/>
 
+        
+        <ItemsControl Margin="25 20 25 20"  BorderBrush="Transparent" Background="#cacfd2" Grid.Row="1" ItemsSource="{Binding Contacts}"  >
 
-
-        <ListView Background="#cacfd2" Grid.Row="1" ItemsSource="{Binding Contacts}" HorizontalAlignment="Stretch">
-                
-                <ListView.ItemTemplate>
+            <ItemsControl.ItemTemplate>
                     <DataTemplate DataType="models:Contact">
                     <Grid HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
 
-
-                        <TextBlock Grid.Column="0" Margin="0 10 20 0" Text="{Binding FullName}" 
-                                   Style="{StaticResource OutputText}"/>
-
-                        <Button Grid.Column="1" Content=" Details" HorizontalAlignment="Right" 
+                        <TextBlock Grid.Column="0" Margin=" 0 0 0 8" Text="{Binding FullName}" 
+                                   Style="{StaticResource OutputText}"
+                                   Background="DarkGray"/>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                            <Button Grid.Column="1" Margin="0 0 10 8" Content="&#xf002;" 
+                                    Style="{StaticResource DetalisButton}"
                                     CommandParameter="{Binding .}" 
                                     Command="{Binding DataContext.GoToDetailsViewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
-
+                            
+                            <Button Margin="0 0 10 8" Content="&#xf1f8;" 
+                                    Style="{StaticResource DetalisButton}"
+                                    CommandParameter="{Binding .}" 
+                                    Command="{Binding DataContext.DeleteContactInListCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"/>     
+                        </StackPanel>
                     </Grid>
-                </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        
         <Button Grid.Row="2" Content="Add new Contact" 
                 Margin="40 0 40 30"
-           Style="{StaticResource StandardButton}"/>
+                Style="{StaticResource StandardButton}"
+                Command="{Binding GoToAddContactCommand}"/>
     </Grid>
 </UserControl>
+
+
+
+    
+    
