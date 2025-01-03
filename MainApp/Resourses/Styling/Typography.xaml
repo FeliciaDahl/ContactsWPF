@@ -8,6 +8,7 @@
         <Setter Property="FontFamily" Value="{StaticResource Nunito}"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontSize" Value="28"/>
+        <Setter Property="Foreground" Value="White"/>
     </Style>
 
     <!--Label-->

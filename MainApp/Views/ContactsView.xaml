@@ -10,7 +10,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="750" d:DesignWidth="450">
 
-    <Grid Background="#cacfd2" >
+    <Grid Background="#50545a" >
         <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -21,7 +21,7 @@
         <TextBlock Grid.Row="0" Text="My Contacts" Style="{StaticResource TitleText}"/>
 
         
-        <ItemsControl Margin="25 20 25 20"  BorderBrush="Transparent" Background="#cacfd2" Grid.Row="1" ItemsSource="{Binding Contacts}"  >
+        <ItemsControl Margin="25 20 25 20"  BorderBrush="Transparent"  Grid.Row="1" ItemsSource="{Binding Contacts}"  >
 
             <ItemsControl.ItemTemplate>
                     <DataTemplate DataType="models:Contact">
@@ -33,7 +33,8 @@
 
                         <TextBlock Grid.Column="0" Margin=" 0 0 0 8" Text="{Binding FullName}" 
                                    Style="{StaticResource OutputText}"
-                                   Background="DarkGray"/>
+                                   Background="DarkGray" />
+                                  
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
                             <Button Grid.Column="1" Margin="0 0 10 8" Content="&#xf002;" 
                                     Style="{StaticResource DetalisButton}"

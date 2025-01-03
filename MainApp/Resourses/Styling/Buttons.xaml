@@ -45,7 +45,7 @@
         <Setter Property="Background" Value="#1d8348"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Foreground" Value="#000000"/>
-        <Setter Property="FontFamily" Value="{StaticResource fa-solid}"/>
+        <Setter Property="FontFamily" Value="{StaticResource  fa-solid}"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Template">
             <Setter.Value>

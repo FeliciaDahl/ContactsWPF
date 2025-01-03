@@ -12,7 +12,7 @@
              d:DesignHeight="750" d:DesignWidth="450">
 
 
-    <Grid   Background="#cacfd2" >
+     <Grid Background="#50545a" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
