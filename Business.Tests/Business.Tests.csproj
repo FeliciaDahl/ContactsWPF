@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
+    <ProjectReference Include="..\Dialog.ConsoleApp\Dialog.ConsoleApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -70,7 +70,6 @@ public class ContactService : IContactService
             if (listContact == null)
                 return false; 
             
-
             listContact.FirstName = updatedContact.FirstName;
             listContact.LastName = updatedContact.LastName;
             listContact.Email = updatedContact.Email;
