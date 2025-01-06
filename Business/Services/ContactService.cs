@@ -1,11 +1,9 @@
 ﻿
 
 using Business.Entities;
-using Business.Factories;
 using Business.Interfaces;
 using Business.Models;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.Json;
 
@@ -35,7 +33,6 @@ public class ContactService : IContactService
 
             var json = JsonSerializer.Serialize(_contacts, _jsonOptions);
             _fileService.SaveListToFile(json);
-
 
             return true;
         }
@@ -105,8 +102,7 @@ public class ContactService : IContactService
 
             _contacts.Remove(listContact);
 
-           
-
+          
             var json = JsonSerializer.Serialize(_contacts, _jsonOptions);
             _fileService.SaveListToFile(json);
 

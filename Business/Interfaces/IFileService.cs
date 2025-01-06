@@ -2,7 +2,9 @@
 {
     public interface IFileService
     {
-        string LoadListFromFile();
+
         bool SaveListToFile(string content);
+        string LoadListFromFile();
+     
     }
 }
