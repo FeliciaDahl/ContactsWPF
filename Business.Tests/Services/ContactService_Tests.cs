@@ -95,10 +95,13 @@ public class ContactService_Tests
 
     }
     [Fact]
+
     public void UpdateContact_ShouldReturnTrue_WhenContactIsUpdated()
     {
-        // arrange
-        var originalContact = new ContactEntity
+        // arrange
+
+        var originalContact = new ContactEntity
+
         {
             Id = Guid.NewGuid().ToString(),
             FirstName = "TestFirstName",
@@ -108,20 +111,13 @@ public class ContactService_Tests
             Address = "Street",
             PostalCode = "12345",
             City = "GBG"
+
         };
 
-       
-        _fileServiceMock
-            .Setup(fs => fs.LoadListFromFile())
-            .Returns(JsonSerializer.Serialize(new List<ContactEntity> { originalContact }));
+         var updatedContact = new Contact
 
-       
-        var loadedContacts = _contactService.GetAll();
-
-       
-        var updatedContact = new Contact
         {
-            Id = originalContact.Id, 
+            Id = originalContact.Id,
             FirstName = "TestFirstName2",
             LastName = "TestLastName2",
             Email = "test2@example.com",
@@ -131,12 +127,22 @@ public class ContactService_Tests
             City = "GBG",
         };
 
-       //act
-        bool result = _contactService.UpdateContact(updatedContact);
 
-        //assert
+        _fileServiceMock
+           .Setup(fs => fs.LoadListFromFile())
+            .Returns(JsonSerializer.Serialize(new List<ContactEntity> { originalContact })); 
+        _fileServiceMock
+           .Setup(fs => fs.SaveListToFile(It.IsAny<string>()))
+            .Returns(true);
+
+        var contactService = new ContactService(_fileServiceMock.Object);
+        contactService.GetAll();
+
+        // act
+        bool result = contactService.UpdateContact(updatedContact);
+
+        // assert
         Assert.True(result);
-
     }
 
     [Fact]

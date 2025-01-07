@@ -65,7 +65,7 @@ public class ContactService : IContactService
     {
         try
         {
-            var listContact = _contacts.FirstOrDefault(contact => contact.Id == updatedContact.Id);
+            var listContact = _contacts.FirstOrDefault(contact => string.Equals(contact.Id, updatedContact.Id, StringComparison.OrdinalIgnoreCase));
 
             if (listContact == null)
                 return false; 
