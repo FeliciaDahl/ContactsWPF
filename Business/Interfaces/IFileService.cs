@@ -1,10 +1,9 @@
-﻿namespace Business.Interfaces
-{
-    public interface IFileService
-    {
+﻿namespace Business.Interfaces;
 
-        bool SaveListToFile(string content);
-        string LoadListFromFile();
-     
-    }
+public interface IFileService
+{
+
+    bool SaveListToFile(string content);
+    string LoadListFromFile();
+ 
 }

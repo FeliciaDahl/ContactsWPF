@@ -2,11 +2,13 @@
 using Business.Helpers;
 using Business.Interfaces;
 using Business.Models;
+namespace Business.Factories;
 
 public static class ContactEntityFactory
 {
 
     private static readonly IGenerateUniqeId _generateUniqeId = new GenerateUniqeId();
+
     public static ContactEntity Create(ContactModel contact)
     {
 

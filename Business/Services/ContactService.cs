@@ -1,6 +1,7 @@
 ﻿
 
 using Business.Entities;
+using Business.Factories;
 using Business.Interfaces;
 using Business.Models;
 using System;
@@ -12,7 +13,6 @@ namespace Business.Services;
 public class ContactService : IContactService
 
 {
-   
     private readonly IFileService _fileService;
     private readonly JsonSerializerOptions _jsonOptions;
     private List<ContactEntity> _contacts = [];

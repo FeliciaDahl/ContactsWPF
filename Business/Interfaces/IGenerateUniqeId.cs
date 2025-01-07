@@ -1,7 +1,6 @@
-﻿namespace Business.Interfaces
+﻿namespace Business.Interfaces;
+
+public interface IGenerateUniqeId
 {
-    public interface IGenerateUniqeId
-    {
-        string GenerateId();
-    }
+    string GenerateId();
 }

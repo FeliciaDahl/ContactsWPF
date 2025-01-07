@@ -42,7 +42,7 @@ public class ContactService_Tests
           .Returns(true);
 
         //act
-        var result = _contactService.AddContact(contactModel);
+        bool result = _contactService.AddContact(contactModel);
 
         //assert
         Assert.True(result);
@@ -132,14 +132,12 @@ public class ContactService_Tests
         };
 
        //act
-        var result = _contactService.UpdateContact(updatedContact);
-
+        bool result = _contactService.UpdateContact(updatedContact);
 
         //assert
         Assert.True(result);
 
     }
-
 
     [Fact]
     public void DeleteContact_ShouldReturnTrue_WhenContactIsDeleted()
