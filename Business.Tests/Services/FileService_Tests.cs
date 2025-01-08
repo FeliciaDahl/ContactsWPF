@@ -12,9 +12,9 @@ public class FileService_Tests
         //arrange
         var directoryPath = "test/path";
         var fileName = "test.json";
-        var fileService = new FileService(directoryPath, fileName);
         var content = "Test content";
 
+        var fileService = new FileService(directoryPath, fileName);
         //act
         var result = fileService.SaveListToFile(content);
 
@@ -31,8 +31,8 @@ public class FileService_Tests
         //arrange
         var directoryPath = "test/path";
         var fileName = "test.json";
-        var fileService = new FileService(directoryPath, fileName);
         var content = "Test content";
+        var fileService = new FileService(directoryPath, fileName);
         File.WriteAllText(Path.Combine(directoryPath, fileName), content);
 
         //act

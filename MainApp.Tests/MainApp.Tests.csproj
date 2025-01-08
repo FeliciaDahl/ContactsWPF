@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
-    <ProjectReference Include="..\Dialog.ConsoleApp\Dialog.ConsoleApp.csproj" />
+    <ProjectReference Include="..\MainApp\MainApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -61,22 +61,24 @@ public class ContactService : IContactService
 
     }
 
-    public bool UpdateContact(Contact updatedContact)
+    public bool UpdateContact(Contact contactToUpdate)
     {
         try
         {
-            var listContact = _contacts.FirstOrDefault(contact => string.Equals(contact.Id, updatedContact.Id, StringComparison.OrdinalIgnoreCase));
+            var listContact = _contacts.FirstOrDefault(contact => string.Equals(contact.Id, contactToUpdate.Id));
 
             if (listContact == null)
-                return false; 
-            
-            listContact.FirstName = updatedContact.FirstName;
-            listContact.LastName = updatedContact.LastName;
-            listContact.Email = updatedContact.Email;
-            listContact.Phone = updatedContact.Phone;
-            listContact.Address = updatedContact.Address;
-            listContact.PostalCode = updatedContact.PostalCode;
-            listContact.City = updatedContact.City;
+            {
+                return false;
+            }
+               
+            listContact.FirstName = contactToUpdate.FirstName;
+            listContact.LastName = contactToUpdate.LastName;
+            listContact.Email = contactToUpdate.Email;
+            listContact.Phone = contactToUpdate.Phone;
+            listContact.Address = contactToUpdate.Address;
+            listContact.PostalCode = contactToUpdate.PostalCode;
+            listContact.City = contactToUpdate.City;
 
             var json = JsonSerializer.Serialize(_contacts, _jsonOptions);
             _fileService.SaveListToFile(json);
@@ -97,11 +99,12 @@ public class ContactService : IContactService
             var listContact = _contacts.FirstOrDefault(contact => contact.Id == contactToDelete.Id);
            
             if (listContact == null)
+            {
                 return false;
-
+            }
+                
             _contacts.Remove(listContact);
 
-          
             var json = JsonSerializer.Serialize(_contacts, _jsonOptions);
             _fileService.SaveListToFile(json);
 
