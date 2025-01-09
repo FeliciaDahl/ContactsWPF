@@ -50,6 +50,33 @@ public class ContactService_Tests
     }
 
     [Fact]
+    public void AddContact_ShouldReturnFalse_IfExeceptionIsFound()
+    {
+        //arrage
+        var contactModel = new ContactModel
+        {
+            FirstName = "TestFirstName",
+            LastName = "TestLastName",
+            Email = "test@example.com",
+            Phone = "123456789",
+            Address = "Street",
+            PostalCode = "12345",
+            City = "GBG"
+        };
+
+        _fileServiceMock
+          .Setup(fs => fs.SaveListToFile(It.IsAny<string>()))
+          .Throws(new Exception("exception message"));
+
+        //act
+        bool result = _contactService.AddContact(contactModel);
+
+        //assert
+        Assert.False(result);
+        _fileServiceMock.Verify(fs => fs.SaveListToFile(It.IsAny<string>()), Times.Once);
+    }
+
+    [Fact]
     public void GetAll_ShouldReturnListOfContacts()
     {
 
@@ -68,7 +95,7 @@ public class ContactService_Tests
                 City = "GBG"
                 },
 
-            new() 
+            new()
             {
                 Id = "456",
                 FirstName = "TestFirstName2",
@@ -94,16 +121,38 @@ public class ContactService_Tests
         Assert.Equal(2, result.Count());
 
     }
-    [Fact]
 
+    [Fact]
+    public void GetAll_ShouldReturnEmtpyList_WhenListIsEmpty()
+    {
+
+        //arrange 
+    
+        _fileServiceMock
+            .Setup(fs => fs.LoadListFromFile())
+            .Returns(string.Empty);
+
+        //act 
+        var result = _contactService.GetAll();
+
+        //assert
+        Assert.Empty(result);
+        _fileServiceMock.Verify(fs =>  fs.LoadListFromFile(), Times.Once);
+
+    }
+
+
+    [Fact]
+    //Denna kod är genererad med hjälp av Chat GPT-40 mini.
     public void UpdateContact_ShouldReturnTrue_WhenContactIsUpdated()
     {
         // arrange
 
+        //Skapar en existerande kontakt från ContactEntity
         var originalContact = new ContactEntity
 
         {
-            Id = Guid.NewGuid().ToString(),
+            Id = "testId",
             FirstName = "TestFirstName",
             LastName = "TestLastName",
             Email = "test@example.com",
@@ -113,10 +162,10 @@ public class ContactService_Tests
             City = "GBG"
 
         };
-
+        //Skapar den uppdaterade kontakten
          var updatedContact = new Contact
 
-        {
+            {
             Id = originalContact.Id,
             FirstName = "TestFirstName2",
             LastName = "TestLastName2",
@@ -125,24 +174,34 @@ public class ContactService_Tests
             Address = "Street 2",
             PostalCode = "123",
             City = "GBG",
-        };
+         };
 
-
+        //genom mock simuleraa en hämtning av listan som innehåller originalContact
         _fileServiceMock
            .Setup(fs => fs.LoadListFromFile())
-            .Returns(JsonSerializer.Serialize(new List<ContactEntity> { originalContact })); 
+            .Returns(JsonSerializer.Serialize(new List<ContactEntity> {originalContact})); 
+
+        //simulerar att nedsparningen utav den nya listan returnerar true
         _fileServiceMock
            .Setup(fs => fs.SaveListToFile(It.IsAny<string>()))
-            .Returns(true);
+           .Returns(true);
 
+        //en ny instans av contactService
         var contactService = new ContactService(_fileServiceMock.Object);
+
+        //anropar GetAll som ska hämta upp nya listan
         contactService.GetAll();
 
         // act
+
+        //sparar reultatet efter anropet av UpdateContact där jag skickar med updatedContact
         bool result = contactService.UpdateContact(updatedContact);
 
         // assert
+
+        //förväntar mig reultatet true när kontakten blivit sparad och att nedsparningen av listan körs en gång
         Assert.True(result);
+        _fileServiceMock.Verify(fs => fs.SaveListToFile(It.IsAny<string>()), Times.Once);
     }
 
     [Fact]
@@ -160,6 +219,7 @@ public class ContactService_Tests
             PostalCode = "12345",
             City = "GBG"
         };
+
 
         _fileServiceMock
             .Setup(fs => fs.LoadListFromFile())

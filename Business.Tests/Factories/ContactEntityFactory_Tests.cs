@@ -6,7 +6,7 @@ namespace Business.Tests.Factories;
 public class ContactEntityFactory_Tests
 {
     [Fact]
-    public void Create_SetsProperties_WithContactModel()
+    public void Create_ShouldReturnContactEntity_WhenContactModelIsProvided()
     {
         // arrange
         var firstName = "TestFirstName";
@@ -43,7 +43,7 @@ public class ContactEntityFactory_Tests
     }
 
     [Fact]
-    public void Create_SetsProperties_WithContactEntity()
+    public void Create_ShouldReturnContact_WhenContactEntityIsProvided()
     {
         // arrange
         var id = "Test-ID";

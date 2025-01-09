@@ -15,6 +15,7 @@ public class FileService_Tests
         var content = "Test content";
 
         var fileService = new FileService(directoryPath, fileName);
+
         //act
         var result = fileService.SaveListToFile(content);
 
