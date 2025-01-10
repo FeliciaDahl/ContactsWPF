@@ -7,14 +7,14 @@ using Moq;
 namespace MainApp.Tests;
   /* Denna kod är genererad med hjälp av GPT-4o mini. 
    * Testet kontrollerar att Save anropar AddContact och skickar med rätt värde. */
-public class AddContactViewModel_SimpleSaveTest
+public class AddContactViewModel_Tests
 {
     private readonly Mock<IContactService> _contactServiceMock;
     private readonly Mock<IServiceProvider> _serviceProviderMock;
     private readonly AddContactViewModel _addContactViewModel;
 
-    //I konstruktorn lägger vi in det som behöver mockas. 
-    public AddContactViewModel_SimpleSaveTest()
+    //I konstruktorn lägger jag in det som behöver mockas. 
+    public AddContactViewModel_Tests()
     {
         _contactServiceMock = new Mock<IContactService>();
         _serviceProviderMock = new Mock<IServiceProvider>();
@@ -58,6 +58,33 @@ public class AddContactViewModel_SimpleSaveTest
             contactModel.Address == "Street" &&
             contactModel.PostalCode == "12345" &&
             contactModel.City == "GBG")), Times.Once);
+    }
+
+
+    [Fact]
+
+    public void Save_ShouldNotCallUpdateContact_WhenFieldsAreEmpty()
+    {
+        //arrange
+        var contactModel = new ContactModel
+        {
+            FirstName = "",
+            LastName = "",
+            Email = "test@example.com",
+            Phone = "123456789",
+            Address = "Street",
+            PostalCode = "12345",
+            City = "GBG"
+        };
+
+        _addContactViewModel.Contact = contactModel;
+
+        //act
+        _addContactViewModel.SaveCommand.Execute(null);
+
+        //assert
+        _contactServiceMock
+       .Verify(service => service.AddContact(It.IsAny<ContactModel>()), Times.Never);
     }
 }
 

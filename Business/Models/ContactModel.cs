@@ -23,13 +23,13 @@ public class ContactModel
     [Phone(ErrorMessage = "Invalid phone number format, try again.")]
     public string Phone { get; set; } = null!;
 
-    [Required(ErrorMessage = "Lastname is required.")]
+    [Required(ErrorMessage = "Adress is required.")]
     public string Address { get; set; } = null!;
 
-    [Required(ErrorMessage = "Lastname is required.")]
+    [Required(ErrorMessage = "Postal code is required.")]
     public string PostalCode { get; set; } = null!;
 
-    [Required(ErrorMessage = "Lastname is required.")]
+    [Required(ErrorMessage = "City is required.")]
     public string City { get; set; } = null!;
     public string FullName => $"{FirstName} {LastName}";
 

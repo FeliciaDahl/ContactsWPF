@@ -13,15 +13,14 @@
     <Grid Background="#50545a" >
         <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-
         <TextBlock Grid.Row="0" Text="My Contacts" Style="{StaticResource TitleText}"/>
 
-        
-        <ItemsControl Margin="25 20 25 20"  BorderBrush="Transparent"  Grid.Row="1" ItemsSource="{Binding Contacts}"  >
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+        <ItemsControl Margin="25 20 25 20" BorderBrush="Transparent" ItemsSource="{Binding Contacts}"  >
 
             <ItemsControl.ItemTemplate>
                     <DataTemplate DataType="models:Contact">
@@ -50,7 +49,8 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-        
+        </ScrollViewer>
+
         <Button Grid.Row="2" Content="Add new Contact" 
                 Margin="40 0 40 30"
                 Style="{StaticResource StandardButton}"

@@ -11,7 +11,6 @@ public static class ContactEntityFactory
 
     public static ContactEntity Create(ContactModel contact)
     {
-
         return new ContactEntity
         {
             Id = _generateUniqeId.GenerateId(),

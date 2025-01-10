@@ -27,7 +27,7 @@
         <StackPanel Grid.Row="1" Margin="25 0 25 0">
             <TextBlock Text="First name" Style="{StaticResource LableText}"/>
             <TextBox Text="{Binding Contact.FirstName}" Margin="0,0,0,10" Padding="6" />
-
+    
             <TextBlock Text="Last name" Style="{StaticResource LableText}"/>
             <TextBox Text="{Binding Contact.LastName}" Margin="0,0,0,10" Padding="6" />
 

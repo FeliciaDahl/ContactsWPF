@@ -10,11 +10,15 @@ public class ContactViewModel_Tests
 {
 
     private readonly Mock<IContactService> _contactServiceMock;
-    private readonly ContactViewModel _viewModel;
+    private readonly Mock<IServiceProvider> _serviceProviderMock;
+
+    private readonly ContactViewModel _contactViewModel;
     public ContactViewModel_Tests()
     {
         _contactServiceMock = new Mock<IContactService>();
-        _viewModel = new ContactViewModel(null!, _contactServiceMock.Object);
+        _serviceProviderMock = new Mock<IServiceProvider>();
+
+        _contactViewModel = new ContactViewModel(_serviceProviderMock.Object, _contactServiceMock.Object);
 
     }
 
@@ -34,7 +38,7 @@ public class ContactViewModel_Tests
             City = "GBG"
         };
 
-        _viewModel.Contacts.Add(contactToDelete);
+        _contactViewModel.Contacts.Add(contactToDelete);
         
            _contactServiceMock
             .Setup(cs => cs.DeleteContact(contactToDelete))
@@ -42,11 +46,11 @@ public class ContactViewModel_Tests
 
         //act
 
-         _viewModel.DeleteContactInListCommand.Execute(contactToDelete);
+        _contactViewModel.DeleteContactInListCommand.Execute(contactToDelete);
 
         //assert
        
-        Assert.DoesNotContain(contactToDelete, _viewModel.Contacts);
+        Assert.DoesNotContain(contactToDelete, _contactViewModel.Contacts);
         _contactServiceMock.Verify(service => service.DeleteContact(contactToDelete), Times.Once);
 
     }
@@ -66,17 +70,17 @@ public class ContactViewModel_Tests
             PostalCode = "12345",
             City = "GBG"
         };
-        _viewModel.Contacts.Add(contactToDelete);
+        _contactViewModel.Contacts.Add(contactToDelete);
 
         _contactServiceMock
          .Setup(cs => cs.DeleteContact(contactToDelete))
          .Returns(false);
 
         //act
-        _viewModel.DeleteContactInListCommand.Execute(contactToDelete);
+        _contactViewModel.DeleteContactInListCommand.Execute(contactToDelete);
 
         //assert
-        Assert.Contains(contactToDelete, _viewModel.Contacts);
+        Assert.Contains(contactToDelete, _contactViewModel.Contacts);
 
     }
 }

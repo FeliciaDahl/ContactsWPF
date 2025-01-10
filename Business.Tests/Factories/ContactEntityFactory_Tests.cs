@@ -2,6 +2,7 @@
 using Business.Entities;
 using Business.Factories;
 using Business.Models;
+
 namespace Business.Tests.Factories;
 public class ContactEntityFactory_Tests
 {

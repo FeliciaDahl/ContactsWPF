@@ -143,12 +143,14 @@ public class ContactService_Tests
 
 
     [Fact]
-    //Denna kod är genererad med hjälp av Chat GPT-40 mini.
+    /*Denna kod är genererad med hjälp av Chat GPT-40 mini. 
+     Testet kontrollerar att UpdateContact returnerar true när kontakten är uppdaterad */
+   
     public void UpdateContact_ShouldReturnTrue_WhenContactIsUpdated()
     {
         // arrange
 
-        //Skapar en existerande kontakt från ContactEntity
+        //skapar ett ContactEntity objekt för existerande kontakt
         var originalContact = new ContactEntity
 
         {
@@ -160,12 +162,11 @@ public class ContactService_Tests
             Address = "Street",
             PostalCode = "12345",
             City = "GBG"
-
         };
         //Skapar den uppdaterade kontakten
          var updatedContact = new Contact
 
-            {
+         {
             Id = originalContact.Id,
             FirstName = "TestFirstName2",
             LastName = "TestLastName2",
@@ -176,7 +177,7 @@ public class ContactService_Tests
             City = "GBG",
          };
 
-        //genom mock simuleraa en hämtning av listan som innehåller originalContact
+        //genom mock simuleras en hämtning av listan som innehåller originalContact
         _fileServiceMock
            .Setup(fs => fs.LoadListFromFile())
             .Returns(JsonSerializer.Serialize(new List<ContactEntity> {originalContact})); 
@@ -193,8 +194,7 @@ public class ContactService_Tests
         contactService.GetAll();
 
         // act
-
-        //sparar reultatet efter anropet av UpdateContact där jag skickar med updatedContact
+        //sparar reultatet av anrop av UpdateContact där jag skickar med updatedContact
         bool result = contactService.UpdateContact(updatedContact);
 
         // assert

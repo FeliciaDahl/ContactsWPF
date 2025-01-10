@@ -56,23 +56,11 @@ public class MenuDialog(IContactService contactService) : IMenuDialog
 
         Console.Clear();
         contact.FirstName = GetValidatedInput("Enter first name :", nameof(contact.FirstName));
-
-
         contact.LastName = GetValidatedInput("Enter last name :", nameof(contact.LastName));
-
-
         contact.Email = GetValidatedInput("Enter email :", nameof(contact.Email));
-
-
         contact.Phone = GetValidatedInput("Enter phone number :", nameof(contact.Phone));
-
-
         contact.Address = GetValidatedInput("Enter address :", nameof(contact.Address));
-
-
         contact.PostalCode = GetValidatedInput("Enter postal code :", nameof(contact.PostalCode));
-
-
         contact.City = GetValidatedInput("Enter city :", nameof(contact.City));
 
         bool result = _contactService.AddContact(contact);
@@ -82,7 +70,7 @@ public class MenuDialog(IContactService contactService) : IMenuDialog
         else
             OutputDialog("Could not create a contact, please try again");
 
-        Console.ReadKey();
+    
     }
 
     public string GetValidatedInput(string prompt, string properyName)
@@ -144,7 +132,6 @@ public class MenuDialog(IContactService contactService) : IMenuDialog
         Console.Clear();
         Console.WriteLine(message);
         Console.ReadKey();
-
     }
 }
 
